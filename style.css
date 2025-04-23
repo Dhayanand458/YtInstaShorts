@@ -1,0 +1,313 @@
+/* ===== GLOBAL RESET & BASE ===== */
+:root {
+    --primary: #4a6bff;
+    --primary-dark: #3a56cc;
+    --text: #ffffff;
+    --bg: #000000;
+    --card-bg: #121212;
+    --text-light: #b3b3b3;
+    --shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    --radius: 12px;
+    --transition: all 0.3s ease;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  /* ===== LAYOUT & CONTAINERS ===== */
+  .container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(90deg, #4a6bff, #6b46ff);
+  }
+  
+  /* ===== TYPOGRAPHY ===== */
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(90deg, #4a6bff, #6b46ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+  
+  .subtitle {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+  }
+  
+  /* ===== INPUT & BUTTONS ===== */
+  .input-group {
+    display: flex;
+    gap: 1rem;
+  }
+  
+  #linkInput {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid #333;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    transition: var(--transition);
+    background: #1e1e1e;
+    color: white;
+  }
+  
+  #linkInput:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(74, 107, 255, 0.2);
+  }
+  
+  .cta-button, .remove-button {
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .cta-button:hover, .remove-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* ===== NAVIGATION ===== */
+  .nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    transition: var(--transition);
+    background: rgba(74, 107, 255, 0.1);
+  }
+  
+  .nav:hover {
+    background: rgba(74, 107, 255, 0.2);
+  }
+  
+  /* ===== LINK LIST ===== */
+  .link-list {
+    margin-top: 2rem;
+    list-style: none;
+  }
+  
+  .link-list li {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    background: #1e1e1e;
+    border-radius: var(--radius);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    transition: var(--transition);
+  }
+  
+  .link-list li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .link-content {
+    flex: 1;
+  }
+  
+  .link-url {
+    color: var(--primary);
+    text-decoration: none;
+    word-break: break-all;
+  }
+  
+  .link-number {
+    color: #ffffff;
+    font-weight: 600;
+    min-width: 30px;
+    margin-right: 10px;
+  }
+  
+  
+  .remove-button {
+    background: linear-gradient(90deg, #ff4757, #cc3a46);
+    margin-left: 1rem;
+  }
+  
+  /* ===== STATUS MESSAGES ===== */
+  .status-message {
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: var(--radius);
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  /* ===== EMPTY STATE ===== */
+  .empty-state {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem 2rem;
+    color: var(--text-light);
+  }
+  
+  .empty-state i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+  
+  /* ===== DEBUG SECTION ===== */
+  .debug-section {
+    margin-top: 2rem;
+    color: var(--text-light);
+  }
+  
+  .debug-section summary {
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--radius);
+  }
+  
+  #allLinks {
+    background: #000000;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+  }
+  
+  #allLinks li {
+    color: #00ff00;
+    font-family: 'Courier New', monospace;
+    background: #121212;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-left: 3px solid #00ff00;
+  }
+  
+  /* ===== MOBILE RESPONSIVENESS ===== */
+  @media (max-width: 768px) {
+    .container {
+      margin: 0;
+      padding: 1.5rem;
+      border-radius: 0;
+      min-height: 100vh;
+    }
+    
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+    
+    .subtitle {
+      font-size: 0.9rem;
+    }
+    
+    .input-group {
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    
+    #linkInput {
+      padding: 0.9rem;
+      font-size: 1rem;
+    }
+    
+    .cta-button, .remove-button, .nav {
+      padding: 0.9rem;
+      width: 100%;
+      justify-content: center;
+    }
+    
+    .link-list li {
+      padding: 1rem;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .link-number {
+      margin-bottom: 0.5rem;
+    }
+    
+    .link-content {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    
+    .remove-button {
+      margin: 0.5rem 0 0 0;
+      width: 100%;
+    }
+    
+    .empty-state {
+      padding: 2rem 1rem;
+    }
+    
+    .empty-state i {
+      font-size: 2.5rem;
+    }
+    
+    iframe {
+      height: 200px !important;
+    }
+  }
+  
+  /* ===== EMBED RESPONSIVENESS ===== */
+  iframe, .instagram-media {
+    max-width: 100%;
+    border-radius: var(--radius) !important;
+    margin: 1rem 0 !important;
+  }
+  
+  /* ===== TOUCH OPTIMIZATIONS ===== */
+  @media (hover: none) {
+    button, .nav {
+      transition: none;
+    }
+    
+    button:active, .nav:active {
+      transform: scale(0.98);
+    }
+  }

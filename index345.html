@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>LinkVault | Add Links</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Mobile-specific overrides (won't affect desktop) */
+    @media (max-width: 768px) {
+      .container {
+        margin: 0;
+        padding: 1.5rem;
+        border-radius: 0;
+        min-height: 100vh;
+      }
+      
+      .header h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+      
+      .subtitle {
+        font-size: 0.9rem;
+      }
+      
+      .input-group {
+        flex-direction: column;
+      }
+      
+      #linkInput {
+        padding: 0.8rem;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+      }
+      
+      .cta-button {
+        padding: 0.8rem;
+        width: 100%;
+      }
+      
+      .nav {
+        width: 100%;
+        text-align: center;
+        padding: 0.8rem;
+        margin-top: 1.2rem;
+      }
+      
+      .status-message {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1><i class="fas fa-plus-circle"></i> Add New Link</h1>
+      <p class="subtitle">Paste any URL to save it to your vault</p>
+    </div>
+
+    <div class="input-group">
+      <input 
+        type="text" 
+        id="linkInput" 
+        placeholder="https://example.com" 
+        aria-label="Paste link here"
+        autocapitalize="off"
+        autocorrect="off"
+        inputmode="url"
+      >
+      <button onclick="submitLink()" class="cta-button">
+        <i class="fas fa-paper-plane"></i> Save Link
+      </button>
+    </div>
+
+    <div id="message" class="status-message"></div>
+
+    <a href="pageB.html" class="nav">
+      <i class="fas fa-arrow-right"></i> View All Links
+    </a>
+
+    <!-- Debug Section (Hidden by default) -->
+    <details class="debug-section">
+      <summary>Developer Tools</summary>
+      <ul id="allLinks"></ul>
+    </details>
+  </div>
+
+  <script type="module" src="app.js"></script>
+  <script type="module">
+    import { submitLink, fetchAllLinksForDebug } from './app.js';
+    window.submitLink = submitLink;
+    fetchAllLinksForDebug();
+    
+    // Mobile optimization - focus keyboard on input
+    document.addEventListener('DOMContentLoaded', () => {
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        const input = document.getElementById('linkInput');
+        setTimeout(() => input.focus(), 300);
+      }
+    });
+  </script>
+</body>
+</html>
