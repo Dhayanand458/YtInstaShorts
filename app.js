@@ -19,8 +19,15 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const linksRef = collection(db, "links");
 
-// ✅ URL Normalization (UNCHANGED)
+// ✅ URL Normalization (NOW CHANGED)
 function normalizeUrl(url) {
+  // Handle YouTube Shorts
+  if (url.includes('youtube.com/shorts/') || url.includes('youtu.be/')) {
+    const videoId = url.split('/shorts/')[1]?.split('?')[0] || 
+                   url.split('youtu.be/')[1]?.split('?')[0];
+    if (videoId) return `youtube.com/shorts/${videoId}`;
+  }
+  // Default normalization
   return url.trim().toLowerCase().replace(/\/$/, '').split('?')[0];
 }
 
